@@ -10,8 +10,8 @@ const Header = () => {
         <img src={logo} alt="tree" />
       </NavLink>
       <nav className="navbar">
-        <NavLink to="/create">Create Employee</NavLink>
-        <NavLink to="/employee">Employee List</NavLink>
+        <NavLink className="link" to="/create">Create Employee</NavLink>
+        <NavLink className="link" to="/employee">Employee List</NavLink>
       </nav>
     </header>
   );

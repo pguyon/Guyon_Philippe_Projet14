@@ -1,0 +1,28 @@
+@import '../Variables/Variables.scss';
+
+.home {
+    text-align: center;
+    padding-top: 80px;
+    background-color: $body;
+    height: calc(100vh - 80px);
+
+    img {
+        width: 300px;
+        filter: invert(1);
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        animation: appear 1.5s linear;
+    }
+}
+
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
