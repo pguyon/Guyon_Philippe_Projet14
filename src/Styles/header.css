@@ -13,12 +13,11 @@
 .header .navbar {
   display: flex;
   justify-content: space-between;
-  width: 10%;
+  width: 15%;
 }
 .header .navbar a {
   color: black;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 300;
-  text-transform: capitalize;
 }/*# sourceMappingURL=header.css.map */
