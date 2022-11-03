@@ -1,12 +1,11 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import Header from "../components/Header";
+import logo from "../Assets/logo-hrnet.svg";
+
 
 const Home = () => {
   return (
     <div>
-      <Header />
-      <Outlet />      
+      <img src={logo} alt="tree" />
     </div>
   );
 };
