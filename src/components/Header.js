@@ -4,13 +4,13 @@ import logo from "../Assets/logo-hrnet.svg";
 
 const Header = () => {
   return (
-    <nav className="navbar">
+    <header className="header">
       <img src={logo} alt="tree" />
-      <div className="links">
+      <nav className="navbar">
         <a href="/home">Home</a>
         <a href="/employee">Employee</a>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };
 
