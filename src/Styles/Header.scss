@@ -10,7 +10,7 @@
     padding-inline: 55px;
 
     img {
-        width: 60px;        
+        width: 60px;
     }
 
     .navbar {
@@ -18,11 +18,17 @@
         justify-content: space-between;
         width: 15%;
 
-        .link {
+        a {
             color: black;
             text-decoration: none;
             font-size: 16px;
-            font-weight: 300;            
+            font-weight: 500;
         }
     }
+
+    .active {
+        border-bottom: 2px solid black;
+        
+    }
+
 }

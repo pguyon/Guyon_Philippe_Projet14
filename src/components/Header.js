@@ -10,8 +10,18 @@ const Header = () => {
         <img src={logo} alt="tree" />
       </NavLink>
       <nav className="navbar">
-        <NavLink className="link" to="/create">Create Employee</NavLink>
-        <NavLink className="link" to="/employee">Employee List</NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active" : '')}
+          to="/create"
+        >
+          Create Employee
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active" : '')}
+          to="/employee"
+        >
+          Employee List
+        </NavLink>
       </nav>
     </header>
   );
