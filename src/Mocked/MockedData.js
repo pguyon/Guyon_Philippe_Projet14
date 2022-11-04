@@ -260,4 +260,38 @@ export const States = [
   },
 ];
 
-export const Employee = []
+export const Employee = [
+  {
+    firstName: "firstName",
+    lastName: "lastName",
+    dateOfBirth: "dateOfBirth",
+    startDate: "startDate",
+    department: "department",
+    street: "street",
+    city: "city",
+    state: "state",
+    zipCode: "zipCode",
+  },
+  {
+    firstName: "firstName",
+    lastName: "lastName",
+    dateOfBirth: "dateOfBirth",
+    startDate: "startDate",
+    department: "department",
+    street: "street",
+    city: "city",
+    state: "state",
+    zipCode: "zipCode",
+  },
+  {
+    firstName: "firstName",
+    lastName: "lastName",
+    dateOfBirth: "dateOfBirth",
+    startDate: "startDate",
+    department: "department",
+    street: "street",
+    city: "city",
+    state: "state",
+    zipCode: "zipCode",
+  },
+];
