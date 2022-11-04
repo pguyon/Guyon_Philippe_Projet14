@@ -7,16 +7,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-inline: 55px;
-
-    img {
-        width: 60px;
-    }
+    padding-inline: 55px;   
 
     .navbar {
         display: flex;
         justify-content: space-between;
-        width: 15%;
+        width: 100%;
 
         a {
             color: black;
@@ -28,7 +24,7 @@
 
     .active {
         border-bottom: 2px solid black;
-        
+
     }
 
 }
