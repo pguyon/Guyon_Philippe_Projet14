@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import MaterialReactTable from "material-react-table";
 import { MRT_Localization_EN } from "material-react-table/locales/en";
 import { Employee } from "../Mocked/MockedData";
+import "../Styles/EmployeeList.css";
 
 const EmployeeList = () => {
   const columns = useMemo(
@@ -57,7 +58,7 @@ const EmployeeList = () => {
         data={Employee}
         enableColumnActions={false}
         localization={MRT_Localization_EN}
-        enableColumnFilters={false}       
+        enableColumnFilters={false}
       />
     </section>
   );
