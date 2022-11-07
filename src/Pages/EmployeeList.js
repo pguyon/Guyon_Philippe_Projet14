@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import MaterialReactTable from "material-react-table";
+import { Employee } from "../Mocked/MockedData";
 
 const data = [
   {
@@ -53,25 +54,41 @@ const EmployeeList = () => {
   const columns = useMemo(
     () => [
       {
-        accessorKey: "name.firstName", //access nested data with dot notation
+        accessorKey: "firstName", //access nested data with dot notation
         header: "First Name",
       },
       {
-        accessorKey: "name.lastName",
+        accessorKey: "lastName",
         header: "Last Name",
       },
       {
-        accessorKey: "address", //normal accessorKey
-        header: "Address",
+        accessorKey: "dateOfBirth",
+        header: "Date of Birth",
+      },
+      {
+        accessorKey: "startDate",
+        header: "Start Date"
+      },
+      {
+        accessorKey: 'departement',
+        header: 'departement'
+      },
+      {
+        accessorKey: "street",
+        header: "Street"
       },
       {
         accessorKey: "city",
-        header: "City",
+        header: 'City'
       },
       {
-        accessorKey: "state",
-        header: "State",
+        accessorKey: 'state',
+        header: 'State'
       },
+      {
+        accessorKey: 'zipcode',
+        header: 'ZipCode'
+      }
     ],
     []
   );
@@ -79,7 +96,7 @@ const EmployeeList = () => {
   return (
     <MaterialReactTable
       columns={columns}
-      data={data}
+      data={Employee}
       enableColumnActions={false}
       enableColumnFilters={false}
       enablePagination={false}

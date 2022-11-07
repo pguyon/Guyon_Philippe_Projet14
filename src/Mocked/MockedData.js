@@ -262,7 +262,7 @@ export const States = [
 
 export const Employee = [
   {
-    firstName: "firstName",
+    firstName: "firstName1",
     lastName: "lastName",
     dateOfBirth: "dateOfBirth",
     startDate: "startDate",
@@ -273,7 +273,7 @@ export const Employee = [
     zipCode: "zipCode",
   },
   {
-    firstName: "firstName",
+    firstName: "firstName2",
     lastName: "lastName",
     dateOfBirth: "dateOfBirth",
     startDate: "startDate",
@@ -284,7 +284,7 @@ export const Employee = [
     zipCode: "zipCode",
   },
   {
-    firstName: "firstName",
+    firstName: "firstName3",
     lastName: "lastName",
     dateOfBirth: "dateOfBirth",
     startDate: "startDate",
