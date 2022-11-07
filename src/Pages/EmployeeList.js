@@ -47,6 +47,7 @@ const EmployeeList = () => {
 
   return (
     <section className="table_wrapper">
+      plplplp
       <MaterialReactTable
         columns={columns}
         data={Employee}
