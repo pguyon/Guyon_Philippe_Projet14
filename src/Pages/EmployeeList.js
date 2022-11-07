@@ -46,17 +46,19 @@ const EmployeeList = () => {
   );
 
   return (
-    <MaterialReactTable
-      columns={columns}
-      data={Employee}
-      enableColumnActions={false}
-      enableColumnFilters={false}
-      enablePagination={false}
-      enableSorting={false}
-      enableBottomToolbar={false}
-      enableTopToolbar={false}
-      muiTableBodyRowProps={{ hover: false }}
-    />
+    <section className="table_wrapper">
+      <MaterialReactTable
+        columns={columns}
+        data={Employee}
+        enableColumnActions={false}
+        enableColumnFilters={false}
+        enablePagination={false}
+        enableSorting={false}
+        enableBottomToolbar={false}
+        enableTopToolbar={false}
+        muiTableBodyRowProps={{ hover: false }}
+      />
+    </section>
   );
 };
 
