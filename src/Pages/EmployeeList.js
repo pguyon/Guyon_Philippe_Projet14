@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import MaterialReactTable from "material-react-table";
+import { MRT_Localization_EN } from "material-react-table/locales/en";
 import { Employee } from "../Mocked/MockedData";
 
 const EmployeeList = () => {
@@ -16,10 +17,12 @@ const EmployeeList = () => {
       {
         accessorKey: "dateOfBirth",
         header: "Date of Birth",
+        enableSorting: false,
       },
       {
         accessorKey: "startDate",
         header: "Start Date",
+        enableSorting: false,
       },
       {
         accessorKey: "department",
@@ -28,6 +31,7 @@ const EmployeeList = () => {
       {
         accessorKey: "street",
         header: "Street",
+        enableSorting: false,
       },
       {
         accessorKey: "city",
@@ -40,23 +44,20 @@ const EmployeeList = () => {
       {
         accessorKey: "zipCode",
         header: "ZipCode",
+        enableSorting: false,
       },
     ],
     []
   );
 
   return (
-    <section className="table_wrapper">      
+    <section className="table_wrapper">
       <MaterialReactTable
         columns={columns}
         data={Employee}
         enableColumnActions={false}
-        enableColumnFilters={false}
-        enablePagination={false}
-        enableSorting={false}
-        enableBottomToolbar={false}
-        enableTopToolbar={false}
-        muiTableBodyRowProps={{ hover: false }}
+        localization={MRT_Localization_EN}
+        enableColumnFilters={false}       
       />
     </section>
   );
