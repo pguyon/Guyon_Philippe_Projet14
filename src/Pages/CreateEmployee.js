@@ -1,5 +1,6 @@
 import React from "react";
 import "../Styles/CreateEmployee.css";
+import { States } from "../Mocked/MockedData";
 
 const CreateEmployee = () => {
   return (
@@ -7,27 +8,55 @@ const CreateEmployee = () => {
       <form>
         <fieldset>
           <legend>Identity</legend>
-          <label>
+          <label htmlFor="firstname">
             Firstname
-            <input type="text" name="firstname" placeholder="firstname" />
+            <input
+              type="text"
+              name="firstname"
+              id="firstname"
+              placeholder="firstname"
+            />
           </label>
-          <label>
+          <label htmlFor="lastname">
             Lastname
-            <input type="text" name="lastname" placeholder="lastname" />
+            <input
+              type="text"
+              name="lastname"
+              id="lastname"
+              placeholder="lastname"
+            />
           </label>
         </fieldset>
-      <fieldset>
-        <legend>Date</legend>
-        <label>
-          Date of Birth
-          <input type="date" name="date of birth" />
-        </label>
-        <label>
-          Start Date
-          <input type="date" name="start date" />
-        </label>
-      </fieldset>
-       
+        <fieldset>
+          <legend>Date</legend>
+          <label htmlFor="birthdate">
+            Date of Birth
+            <input type="date" name="birthdate" id="birthdate" />
+          </label>
+          <label htmlFor="startdate">
+            Start Date
+            <input type="date" name="startdate" id="startdate" />
+          </label>
+        </fieldset>
+        <fieldset className="address">
+          <legend>Address</legend>
+          <label htmlFor="street">
+            Street
+            <input type="text" name="street" placeholder="Street" id="street" />
+          </label>
+          <label htmlFor="city">
+            City
+            <input type="text" name="city" placeholder="City" id="city" />
+          </label>
+          <label htmlFor="states">
+            States
+            <select name="states" id="state">
+              {States.map((state) => (
+                <option key={state.value}>{state.name}</option>
+              ))}
+            </select>
+          </label>
+        </fieldset>
 
         <button type="submit">Create</button>
       </form>

@@ -19,6 +19,7 @@
   padding: 15px;
   justify-content: space-between;
   width: 80%;
+  flex-wrap: wrap;
 }
 .form_wrapper form fieldset label {
   display: flex;
