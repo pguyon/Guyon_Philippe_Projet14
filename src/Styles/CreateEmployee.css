@@ -1,0 +1,33 @@
+.form_wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgb(57, 62, 70);
+  height: calc(100vh - 80px);
+}
+.form_wrapper form {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 450px;
+  align-items: center;
+}
+.form_wrapper form label {
+  display: flex;
+  color: white;
+  flex-direction: column;
+  margin-top: 5px;
+}
+.form_wrapper form label input {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  text-transform: capitalize;
+  width: 150px;
+}
+.form_wrapper button {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+}/*# sourceMappingURL=CreateEmployee.css.map */

@@ -1,0 +1,42 @@
+@import '../Variables/Variables.scss';
+
+
+.form_wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: $body;
+    height: calc(100vh - 80px);
+
+    form {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        width: 450px;
+        align-items: center;
+
+        label {
+            display: flex;
+            color: white;
+            flex-direction: column;
+            margin-top: 5px;
+
+            input {
+                margin-top: 5px;
+                padding: 10px;
+                border-radius: 5px;
+                text-transform: capitalize;
+                width: 150px;
+            }
+        }
+
+    }
+
+    button {
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100px;
+
+    }
+}
