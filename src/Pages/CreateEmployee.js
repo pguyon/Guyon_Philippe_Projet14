@@ -1,6 +1,6 @@
 import React from "react";
 import "../Styles/CreateEmployee.css";
-import { States } from "../Mocked/MockedData";
+import { States, Departments } from "../Mocked/MockedData";
 
 const CreateEmployee = () => {
   return (
@@ -38,7 +38,7 @@ const CreateEmployee = () => {
             <input type="date" name="startdate" id="startdate" />
           </label>
         </fieldset>
-        <fieldset className="address">
+        <fieldset>
           <legend>Address</legend>
           <label htmlFor="street">
             Street
@@ -53,6 +53,26 @@ const CreateEmployee = () => {
             <select name="states" id="state">
               {States.map((state) => (
                 <option key={state.value}>{state.name}</option>
+              ))}
+            </select>
+          </label>
+          <label htmlFor="zipcode">
+            City
+            <input
+              type="text"
+              name="zipcode"
+              placeholder="ZipCode"
+              id="zipcode"
+            />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Sector</legend>
+          <label htmlFor="Departement">
+            Departement
+            <select name="Departement" id="Department">
+              {Departments.map((department) => (
+                <option key={department.value}>{department.name}</option>
               ))}
             </select>
           </label>
