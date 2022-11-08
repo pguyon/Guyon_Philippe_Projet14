@@ -5,7 +5,8 @@ const CreateEmployee = () => {
   return (
     <section className="form_wrapper">
       <form>
-       
+        <fieldset>
+          <legend>Identity</legend>
           <label>
             Firstname
             <input type="text" name="firstname" placeholder="firstname" />
@@ -14,18 +15,19 @@ const CreateEmployee = () => {
             Lastname
             <input type="text" name="lastname" placeholder="lastname" />
           </label>
+        </fieldset>
+      <fieldset>
+        <legend>Date</legend>
+        <label>
+          Date of Birth
+          <input type="date" name="date of birth" />
+        </label>
+        <label>
+          Start Date
+          <input type="date" name="start date" />
+        </label>
+      </fieldset>
        
-
-        
-          <label>
-            Date of Birth
-            <input type="date" name="date of birth" />
-          </label>
-          <label>
-            Start Date
-            <input type="date" name="start date" />
-          </label>
-        
 
         <button type="submit">Create</button>
       </form>
