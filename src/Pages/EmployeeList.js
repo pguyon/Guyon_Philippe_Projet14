@@ -27,7 +27,7 @@ const EmployeeList = () => {
       },
       {
         accessorKey: "department",
-        header: "department",
+        header: "Department",
       },
       {
         accessorKey: "street",
