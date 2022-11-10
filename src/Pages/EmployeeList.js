@@ -1,16 +1,16 @@
 import React, { useMemo } from "react";
 import MaterialReactTable from "material-react-table";
 import { MRT_Localization_EN } from "material-react-table/locales/en";
-import { Employee } from "../Mocked/MockedData";
+// import { Employee } from "../Mocked/MockedData";
 import "../Styles/EmployeeList.css";
 import { useSelector } from "react-redux";
 
 const EmployeeList = () => {
+  const employee = useSelector((state) => state.employee);
+  const arrayEmployee = Object.values(employee)
+ 
   
-  const employee = useSelector((state) => state.employee); 
-
-  console.log(employee);
-  console.log(Employee);
+  console.log(arrayEmployee);
   const columns = useMemo(
     () => [
       {
@@ -57,13 +57,11 @@ const EmployeeList = () => {
     []
   );
 
- 
-
   return (
     <section className="table_wrapper">
       <MaterialReactTable
         columns={columns}
-        data={employee}
+        data={arrayEmployee[0]}
         enableColumnActions={false}
         localization={MRT_Localization_EN}
         enableColumnFilters={false}
