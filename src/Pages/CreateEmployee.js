@@ -1,8 +1,22 @@
 import React from "react";
 import "../Styles/CreateEmployee.css";
 import { States, Departments } from "../Mocked/MockedData";
+import { useDispatch, useSelector } from "react-redux";
 
 const CreateEmployee = () => {
+  const dispatch = useDispatch();
+  const firstName = useSelector((state) => state.employee.firstName);
+  const lastName = useSelector((state) => state.employee.lastName);
+  const dateOfBirth = useSelector((state) => state.employee.dateOfBirth);
+  const startDate = useSelector((state) => state.employee.startDate);
+  const department = useSelector((state) => state.employee.department);
+  const street = useSelector((state) => state.employee.street);
+  const city = useSelector((state) => state.employee.city);
+  const state = useSelector((state) => state.employee.state);
+  const zipCode = useSelector((state) => state.employee.zipCode);
+
+  
+
   return (
     <section className="form_wrapper">
       <form>
