@@ -11,7 +11,9 @@ import {
 import Home from "./Pages/Home";
 import CreateEmployee from "./Pages/CreateEmployee";
 import EmployeeList from "./Pages/EmployeeList";
-import Layout from "./Pages/Layout"
+import Layout from "./Pages/Layout";
+import { Provider } from "react-redux";
+import store from "./Store/Store";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +28,8 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
