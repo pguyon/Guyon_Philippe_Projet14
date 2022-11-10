@@ -1,19 +1,16 @@
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import MaterialReactTable from "material-react-table";
 import { MRT_Localization_EN } from "material-react-table/locales/en";
-// import { Employee } from "../Mocked/MockedData";
+import { Employee } from "../Mocked/MockedData";
 import "../Styles/EmployeeList.css";
 import { useSelector } from "react-redux";
 
 const EmployeeList = () => {
-  // const [data, setData] = useState([]);
-  const employee = useSelector((state) => state.employee);
+  
+  const employee = useSelector((state) => state.employee); 
+
   console.log(employee);
-
-  // useEffect(() => {
-  //   setData(employee);
-  // }, [employee]);
-
+  console.log(Employee);
   const columns = useMemo(
     () => [
       {
@@ -24,41 +21,43 @@ const EmployeeList = () => {
         accessorKey: "lastName",
         header: "Last Name",
       },
-      {
-        accessorKey: "dateOfBirth",
-        header: "Date of Birth",
-        enableSorting: false,
-      },
-      {
-        accessorKey: "startDate",
-        header: "Start Date",
-        enableSorting: false,
-      },
-      {
-        accessorKey: "department",
-        header: "Department",
-      },
-      {
-        accessorKey: "street",
-        header: "Street",
-        enableSorting: false,
-      },
-      {
-        accessorKey: "city",
-        header: "City",
-      },
-      {
-        accessorKey: "state",
-        header: "State",
-      },
-      {
-        accessorKey: "zipCode",
-        header: "ZipCode",
-        enableSorting: false,
-      },
+      // {
+      //   accessorKey: "dateOfBirth",
+      //   header: "Date of Birth",
+      //   enableSorting: false,
+      // },
+      // {
+      //   accessorKey: "startDate",
+      //   header: "Start Date",
+      //   enableSorting: false,
+      // },
+      // {
+      //   accessorKey: "department",
+      //   header: "Department",
+      // },
+      // {
+      //   accessorKey: "street",
+      //   header: "Street",
+      //   enableSorting: false,
+      // },
+      // {
+      //   accessorKey: "city",
+      //   header: "City",
+      // },
+      // {
+      //   accessorKey: "state",
+      //   header: "State",
+      // },
+      // {
+      //   accessorKey: "zipCode",
+      //   header: "ZipCode",
+      //   enableSorting: false,
+      // },
     ],
     []
   );
+
+ 
 
   return (
     <section className="table_wrapper">
