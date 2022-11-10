@@ -1,10 +1,19 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import MaterialReactTable from "material-react-table";
 import { MRT_Localization_EN } from "material-react-table/locales/en";
-import { Employee } from "../Mocked/MockedData";
+// import { Employee } from "../Mocked/MockedData";
 import "../Styles/EmployeeList.css";
+import { useSelector } from "react-redux";
 
 const EmployeeList = () => {
+  // const [data, setData] = useState([]);
+  const employee = useSelector((state) => state.employee);
+  console.log(employee);
+
+  // useEffect(() => {
+  //   setData(employee);
+  // }, [employee]);
+
   const columns = useMemo(
     () => [
       {
@@ -55,7 +64,7 @@ const EmployeeList = () => {
     <section className="table_wrapper">
       <MaterialReactTable
         columns={columns}
-        data={Employee}
+        data={employee}
         enableColumnActions={false}
         localization={MRT_Localization_EN}
         enableColumnFilters={false}
