@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Styles/CreateEmployee.css";
 import { States, Departments } from "../Mocked/MockedData";
 import { useDispatch } from "react-redux";
@@ -17,6 +17,8 @@ const CreateEmployee = () => {
     state: "Alabama",
     zipCode: "",
   };
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const [formValues, setFormValues] = useState(initialValues);
 
@@ -34,11 +36,32 @@ const CreateEmployee = () => {
       zipCode: formValues.zipCode,
     };
     dispatch(addEmployee(newEmployee));
+    setFormErrors(validate(formValues));
+    setIsSubmit(true);
   };
 
-  const onChange = (e) => {
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(formValues);
+    }
+  }, [formErrors, isSubmit, formValues]);
+
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
+  };
+
+  const validate = (values) => {
+    const errors = {};    
+    if (!values.firstName) {
+      errors.firstName = "Firstname is required!";
+    }
+    if (!values.lastName) {
+      errors.lastName = "Lastname is required";
+    }
+
+    return errors;
   };
 
   return (
@@ -53,8 +76,9 @@ const CreateEmployee = () => {
               name="firstName"
               id="firstName"
               placeholder="firstname"
-              onChange={onChange}
+              onChange={handleChange}
             />
+            <p className="error">{formErrors.firstName}</p>
           </label>
           <label htmlFor="lastName">
             Lastname
@@ -63,8 +87,9 @@ const CreateEmployee = () => {
               name="lastName"
               id="lastName"
               placeholder="lastname"
-              onChange={onChange}
+              onChange={handleChange}
             />
+            <p className="error">{formErrors.lastName}</p>
           </label>
         </fieldset>
         <fieldset>
@@ -75,7 +100,7 @@ const CreateEmployee = () => {
               type="date"
               name="dateOfBirth"
               id="dateOfBirth"
-              onChange={onChange}
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="startDate">
@@ -84,7 +109,7 @@ const CreateEmployee = () => {
               type="date"
               name="startDate"
               id="startDate"
-              onChange={onChange}
+              onChange={handleChange}
             />
           </label>
         </fieldset>
@@ -97,7 +122,7 @@ const CreateEmployee = () => {
               name="street"
               placeholder="Street"
               id="street"
-              onChange={onChange}
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="city">
@@ -107,12 +132,12 @@ const CreateEmployee = () => {
               name="city"
               placeholder="City"
               id="city"
-              onChange={onChange}
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="states">
             States
-            <select name="states" id="state" onChange={onChange}>
+            <select name="states" id="state" onChange={handleChange}>
               {States.map((state) => (
                 <option key={state.value}>{state.name}</option>
               ))}
@@ -126,7 +151,7 @@ const CreateEmployee = () => {
               name="zipCode"
               placeholder="ZipCode"
               id="zipCode"
-              onChange={onChange}
+              onChange={handleChange}
             />
           </label>
         </fieldset>
@@ -134,7 +159,7 @@ const CreateEmployee = () => {
           <legend>Sector</legend>
           <label htmlFor="Departement">
             Departement
-            <select name="Departement" id="Department" onChange={onChange}>
+            <select name="Departement" id="Department" onChange={handleChange}>
               {Departments.map((department) => (
                 <option key={department.value}>{department.name}</option>
               ))}
