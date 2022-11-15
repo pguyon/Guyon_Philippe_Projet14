@@ -6,30 +6,39 @@ import { addEmployee } from "../Store/Slice/EmployeeSlice";
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [department, setDepartment] = useState("Sales");
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("Alabama");
-  const [zipCode, setZipCode] = useState("")
+  const initialValues = {
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    startDate: "",
+    department: "Sales",
+    street: "",
+    city: "",
+    state: "Alabama",
+    zipCode: "",
+  };
+
+  const [formValues, setFormValues] = useState(initialValues);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newEmployee = {
-      firstName: firstName,
-      lastName: lastName,
-      dateOfBirth: dateOfBirth,
-      startDate: startDate,
-      department: department,
-      street: street,
-      city: city,
-      state: state,
-      zipCode: zipCode
+      firstName: formValues.firstName,
+      lastName: formValues.lastName,
+      dateOfBirth: formValues.dateOfBirth,
+      startDate: formValues.startDate,
+      department: formValues.department,
+      street: formValues.street,
+      city: formValues.city,
+      state: formValues.state,
+      zipCode: formValues.zipCode,
     };
     dispatch(addEmployee(newEmployee));
+  };
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
   };
 
   return (
@@ -44,38 +53,38 @@ const CreateEmployee = () => {
               name="firstName"
               id="firstName"
               placeholder="firstname"
-              onChange={(e) => setFirstName(e.target.value)}
+              onChange={onChange}
             />
           </label>
-          <label htmlFor="lastname">
+          <label htmlFor="lastName">
             Lastname
             <input
               type="text"
-              name="lastname"
-              id="lastname"
+              name="lastName"
+              id="lastName"
               placeholder="lastname"
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={onChange}
             />
           </label>
         </fieldset>
         <fieldset>
           <legend>Date</legend>
-          <label htmlFor="birthdate">
+          <label htmlFor="dateOfBirth">
             Date of Birth
             <input
               type="date"
-              name="birthdate"
-              id="birthdate"
-              onChange={(e) => setDateOfBirth(e.target.value)}
+              name="dateOfBirth"
+              id="dateOfBirth"
+              onChange={onChange}
             />
           </label>
-          <label htmlFor="startdate">
+          <label htmlFor="startDate">
             Start Date
             <input
               type="date"
-              name="startdate"
-              id="startdate"
-              onChange={(e) => setStartDate(e.target.value)}
+              name="startDate"
+              id="startDate"
+              onChange={onChange}
             />
           </label>
         </fieldset>
@@ -88,7 +97,7 @@ const CreateEmployee = () => {
               name="street"
               placeholder="Street"
               id="street"
-              onChange={(e) => setStreet(e.target.value)}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="city">
@@ -98,30 +107,26 @@ const CreateEmployee = () => {
               name="city"
               placeholder="City"
               id="city"
-              onChange={(e) => setCity(e.target.value)}
+              onChange={onChange}
             />
           </label>
           <label htmlFor="states">
             States
-            <select
-              name="states"
-              id="state"
-              onChange={(e) => setState(e.target.value)}
-            >
+            <select name="states" id="state" onChange={onChange}>
               {States.map((state) => (
                 <option key={state.value}>{state.name}</option>
               ))}
             </select>
           </label>
-          <label htmlFor="zipcode">
+          <label htmlFor="zipCode">
             City
             <input
               type="number"
               min={1}
-              name="zipcode"
+              name="zipCode"
               placeholder="ZipCode"
-              id="zipcode"
-              onChange={(e) => setZipCode(e.target.value)}
+              id="zipCode"
+              onChange={onChange}
             />
           </label>
         </fieldset>
@@ -129,11 +134,7 @@ const CreateEmployee = () => {
           <legend>Sector</legend>
           <label htmlFor="Departement">
             Departement
-            <select
-              name="Departement"
-              id="Department"
-              onChange={(e) => setDepartment(e.target.value)}
-            >
+            <select name="Departement" id="Department" onChange={onChange}>
               {Departments.map((department) => (
                 <option key={department.value}>{department.name}</option>
               ))}
