@@ -60,6 +60,15 @@ const CreateEmployee = () => {
     if (!values.lastName) {
       errors.lastName = "Lastname is required";
     }
+    if(!values.dateOfBirth){
+      errors.dateOfBirth = "Date of birth is required"
+    }
+    if(!values.startDate){
+      errors.startDate = "Start date is required"
+    } else if(values.dateOfBirth > values.startDate){
+      errors.startDate = "The start date must be greater than the date of birth"
+    }
+
 
     return errors;
   };
@@ -102,6 +111,7 @@ const CreateEmployee = () => {
               id="dateOfBirth"
               onChange={handleChange}
             />
+            <p className="error">{formErrors.dateOfBirth}</p>
           </label>
           <label htmlFor="startDate">
             Start Date
@@ -111,6 +121,7 @@ const CreateEmployee = () => {
               id="startDate"
               onChange={handleChange}
             />
+            <p className="error">{formErrors.startDate}</p>
           </label>
         </fieldset>
         <fieldset>

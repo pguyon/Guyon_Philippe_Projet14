@@ -13,21 +13,24 @@
         flex-direction: column;
         padding: 5px;
         width: 450px;
-        height: 700px;
+        min-height: 700px;
         align-items: center;
         justify-content: space-between;
-
+        background-color: aliceblue;
+        border-radius: 15px;
+        font-weight: bold;
+        box-shadow: 0px 0px 4px 4px rgb(247, 245, 255);
+        
+        
         fieldset {
-            color: rgb(238, 238, 238);
+            color: black;            
             display: flex;
             padding: 15px;
             justify-content: space-between;
             width: 80%;
-            flex-wrap: wrap;
-            border: 1px solid;
-            border-radius: 5px;
-            background-color: rgb(0, 173, 181);
-
+            flex-wrap: wrap;            
+            border-radius: 5px;            
+            
             label {
                 display: flex;
                 flex-direction: column;
@@ -50,6 +53,7 @@
                     font-size: 12px;
                     color: red;
                     font-weight: bold;
+                    width: 150px;
                 }
             }
         }
@@ -61,7 +65,7 @@
         border-radius: 5px;
         cursor: pointer;
         width: 100px;
-        background-color: rgb(0, 173, 181);
+        background-color: rgb(52, 167, 173);
         font-weight: 500;
         color: white;
 
