@@ -17,9 +17,9 @@ const CreateEmployee = () => {
     state: "Alabama",
     zipCode: "",
   };
-  const [formErrors, setFormErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
 
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [send, setSend] = useState(false);
   const [formValues, setFormValues] = useState(initialValues);
 
   const handleSubmit = (e) => {
@@ -35,51 +35,47 @@ const CreateEmployee = () => {
       state: formValues.state,
       zipCode: formValues.zipCode,
     };
+
     dispatch(addEmployee(newEmployee));
-    setFormErrors(validate(formValues));
     setIsSubmit(true);
   };
 
   useEffect(() => {
-    console.log(formErrors);
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formValues);
+    if (
+      formValues.firstName.length > 0 &&
+      formValues.lastName.length > 0 &&
+      formValues.dateOfBirth.length > 0 &&
+      formValues.startDate.length > 0 &&
+      formValues.city.length > 0 &&
+      formValues.street.length > 0 &&
+      formValues.zipCode.length > 0 &&
+      formValues.dateOfBirth < formValues.startDate
+    ) {
+      setSend(true);
+    } else {
+      setSend(false);
     }
-  }, [formErrors, isSubmit, formValues]);
+  }, [
+    formValues.firstName,
+    formValues.lastName,
+    formValues.dateOfBirth,
+    formValues.startDate,
+    formValues.city,
+    formValues.street,
+    formValues.zipCode,
+    send,
+  ]);
+
+  useEffect(() => {
+    if (isSubmit) {
+      console.log(formValues);
+      alert("employe créé");
+    }
+  }, [isSubmit, formValues]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-  };
-
-  const validate = (values) => {
-    const errors = {};
-    if (!values.firstName) {
-      errors.firstName = "Firstname is required";
-    }
-    if (!values.lastName) {
-      errors.lastName = "Lastname is required";
-    }
-    if (!values.dateOfBirth) {
-      errors.dateOfBirth = "Date of birth is required";
-    }
-    if (!values.startDate) {
-      errors.startDate = "Start date is required";
-    } else if (values.dateOfBirth > values.startDate) {
-      errors.startDate =
-        "The start date must be greater than the date of birth";
-    }
-    if (!values.street) {
-      errors.street = "Street is required";
-    }
-    if (!values.city) {
-      errors.city = "City is required";
-    }
-    if (!values.zipCode) {
-      errors.zipCode = "Zipcode is required";
-    }
-
-    return errors;
   };
 
   return (
@@ -97,7 +93,6 @@ const CreateEmployee = () => {
                 placeholder="firstname"
                 onChange={handleChange}
               />
-              <p className="error">{formErrors.firstName}</p>
             </label>
             <label htmlFor="lastName">
               Lastname
@@ -108,7 +103,6 @@ const CreateEmployee = () => {
                 placeholder="lastname"
                 onChange={handleChange}
               />
-              <p className="error">{formErrors.lastName}</p>
             </label>
 
             <label htmlFor="dateOfBirth">
@@ -119,7 +113,6 @@ const CreateEmployee = () => {
                 id="dateOfBirth"
                 onChange={handleChange}
               />
-              <p className="error">{formErrors.dateOfBirth}</p>
             </label>
             <label htmlFor="startDate">
               Start Date
@@ -129,7 +122,13 @@ const CreateEmployee = () => {
                 id="startDate"
                 onChange={handleChange}
               />
-              <p className="error">{formErrors.startDate}</p>
+              {formValues.dateOfBirth > formValues.startDate ? (
+                <p className="error">
+                  The start date must be greater than the date of birth
+                </p>
+              ) : (
+                ""
+              )}
             </label>
           </div>
           <div className="field">
@@ -142,7 +141,6 @@ const CreateEmployee = () => {
                 id="street"
                 onChange={handleChange}
               />
-              <p className="error">{formErrors.street}</p>
             </label>
             <label htmlFor="city">
               City
@@ -153,7 +151,6 @@ const CreateEmployee = () => {
                 id="city"
                 onChange={handleChange}
               />
-              <p className="error">{formErrors.city}</p>
             </label>
             <label htmlFor="states">
               States
@@ -173,7 +170,6 @@ const CreateEmployee = () => {
                 id="zipCode"
                 onChange={handleChange}
               />
-              <p className="error">{formErrors.zipCode}</p>
             </label>
           </div>
           <div className="field">
@@ -192,7 +188,11 @@ const CreateEmployee = () => {
           </div>
         </div>
 
-        <button type="submit">Create</button>
+        {send === true ? (
+          <button type="submit">Create</button>
+        ) : (
+          <p>Please fill in the form</p>
+        )}
       </form>
     </section>
   );
