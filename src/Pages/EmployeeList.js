@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import MaterialReactTable from "material-react-table";
 import { MRT_Localization_EN } from "material-react-table/locales/en";
 import "../Styles/EmployeeList.css";
@@ -6,10 +6,17 @@ import { useSelector } from "react-redux";
 
 const EmployeeList = () => {
   const employee = useSelector((state) => state.employee);
-  const arrayEmployee = Object.values(employee)
- 
-  
-  console.log(arrayEmployee);
+  const arrayEmployee = Object.values(employee);
+
+  const el = document.getElementById("react-confirm-alert");
+  const svg = document.getElementById("react-confirm-alert-firm-svg");
+  useEffect(() => {
+    if (el && svg) {
+      el.remove();
+      svg.remove();
+    }
+  }, [el, svg]);
+
   const columns = useMemo(
     () => [
       {

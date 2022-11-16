@@ -5,6 +5,9 @@
     background-color: $body;
     height: calc(100vh - 80px);
 
+    .react-confirm-alert {
+        display: none;
+    }
     @media screen and (max-width: 419px) {
         padding: 75px 10px;;
     }

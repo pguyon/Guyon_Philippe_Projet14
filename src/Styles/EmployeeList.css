@@ -3,6 +3,9 @@
   background-color: rgb(57, 62, 70);
   height: calc(100vh - 80px);
 }
+.table_wrapper .react-confirm-alert {
+  display: none;
+}
 @media screen and (max-width: 419px) {
   .table_wrapper {
     padding: 75px 10px;

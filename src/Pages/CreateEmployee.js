@@ -3,6 +3,9 @@ import "../Styles/CreateEmployee.css";
 import { States, Departments } from "../Mocked/MockedData";
 import { useDispatch } from "react-redux";
 import { addEmployee } from "../Store/Slice/EmployeeSlice";
+import { useNavigate } from "react-router-dom";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
@@ -21,6 +24,7 @@ const CreateEmployee = () => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [send, setSend] = useState(false);
   const [formValues, setFormValues] = useState(initialValues);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,10 +72,20 @@ const CreateEmployee = () => {
 
   useEffect(() => {
     if (isSubmit) {
-      console.log(formValues);
-      alert("employe créé");
+      confirmAlert({        
+        customUI: () => {
+          return (
+            <div className="custom-ui">
+              <h1>Employee create !</h1>
+              <button onClick={() => navigate("/employee")}>
+                Go to employee's list
+              </button>
+            </div>
+          );
+        },
+      });
     }
-  }, [isSubmit, formValues]);
+  }, [isSubmit, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
