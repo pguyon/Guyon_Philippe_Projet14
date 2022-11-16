@@ -10,9 +10,8 @@
   width: 450px;
   height: auto;
   align-items: center;
-  justify-content: space-evenly;
   border-radius: 20px;
-  padding: 5px;
+  padding: 20px;
   box-sizing: border-box;
   background: #ecf0f3;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
