@@ -122,7 +122,7 @@ const CreateEmployee = () => {
                 id="startDate"
                 onChange={handleChange}
               />
-              {formValues.dateOfBirth > formValues.startDate ? (
+              {formValues.dateOfBirth >= formValues.startDate ? (
                 <p className="error">
                   The start date must be greater than the date of birth
                 </p>
