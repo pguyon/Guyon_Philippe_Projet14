@@ -7,18 +7,24 @@
     padding: 20px;
     height: calc(100vh - 80px);
 
+    @media screen and (max-width: 419px) {
+        height: auto;
+    }
+
     form {
         display: flex;
         flex-direction: column;
         width: 450px;
         height: auto;
-        align-items: center;        
+        align-items: center;
         border-radius: 20px;
         padding: 20px;
         box-sizing: border-box;
         background: #ecf0f3;
         box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
         caret-color: red;
+
+
 
         .form_logo {
             height: 100px;

@@ -7,6 +7,11 @@
   justify-content: space-between;
   padding-inline: 55px;
 }
+@media screen and (max-width: 419px) {
+  .header {
+    padding-inline: 10px;
+  }
+}
 .header .navbar {
   display: flex;
   justify-content: space-between;
