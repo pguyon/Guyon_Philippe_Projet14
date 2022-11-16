@@ -53,22 +53,31 @@ const CreateEmployee = () => {
   };
 
   const validate = (values) => {
-    const errors = {};    
+    const errors = {};
     if (!values.firstName) {
-      errors.firstName = "Firstname is required!";
+      errors.firstName = "Firstname is required";
     }
     if (!values.lastName) {
       errors.lastName = "Lastname is required";
     }
-    if(!values.dateOfBirth){
-      errors.dateOfBirth = "Date of birth is required"
+    if (!values.dateOfBirth) {
+      errors.dateOfBirth = "Date of birth is required";
     }
-    if(!values.startDate){
-      errors.startDate = "Start date is required"
-    } else if(values.dateOfBirth > values.startDate){
-      errors.startDate = "The start date must be greater than the date of birth"
+    if (!values.startDate) {
+      errors.startDate = "Start date is required";
+    } else if (values.dateOfBirth > values.startDate) {
+      errors.startDate =
+        "The start date must be greater than the date of birth";
     }
-
+    if (!values.street) {
+      errors.street = "Street is required";
+    }
+    if (!values.city) {
+      errors.city = "City is required";
+    }
+    if (!values.zipCode) {
+      errors.zipCode = "Zipcode is required";
+    }
 
     return errors;
   };
@@ -135,6 +144,7 @@ const CreateEmployee = () => {
               id="street"
               onChange={handleChange}
             />
+            <p className="error">{formErrors.street}</p>
           </label>
           <label htmlFor="city">
             City
@@ -145,6 +155,7 @@ const CreateEmployee = () => {
               id="city"
               onChange={handleChange}
             />
+            <p className="error">{formErrors.city}</p>
           </label>
           <label htmlFor="states">
             States
@@ -155,7 +166,7 @@ const CreateEmployee = () => {
             </select>
           </label>
           <label htmlFor="zipCode">
-            City
+            ZipCode
             <input
               type="number"
               min={1}
@@ -164,6 +175,7 @@ const CreateEmployee = () => {
               id="zipCode"
               onChange={handleChange}
             />
+            <p className="error">{formErrors.zipCode}</p>
           </label>
         </fieldset>
         <fieldset>
