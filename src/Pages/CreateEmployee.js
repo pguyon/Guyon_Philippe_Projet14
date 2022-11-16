@@ -85,110 +85,112 @@ const CreateEmployee = () => {
   return (
     <section className="form_wrapper">
       <form onSubmit={handleSubmit}>
-        <fieldset>
-          <legend>Identity</legend>
-          <label htmlFor="firstName">
-            Firstname
-            <input
-              type="text"
-              name="firstName"
-              id="firstName"
-              placeholder="firstname"
-              onChange={handleChange}
-            />
-            <p className="error">{formErrors.firstName}</p>
-          </label>
-          <label htmlFor="lastName">
-            Lastname
-            <input
-              type="text"
-              name="lastName"
-              id="lastName"
-              placeholder="lastname"
-              onChange={handleChange}
-            />
-            <p className="error">{formErrors.lastName}</p>
-          </label>
-        </fieldset>
-        <fieldset>
-          <legend>Date</legend>
-          <label htmlFor="dateOfBirth">
-            Date of Birth
-            <input
-              type="date"
-              name="dateOfBirth"
-              id="dateOfBirth"
-              onChange={handleChange}
-            />
-            <p className="error">{formErrors.dateOfBirth}</p>
-          </label>
-          <label htmlFor="startDate">
-            Start Date
-            <input
-              type="date"
-              name="startDate"
-              id="startDate"
-              onChange={handleChange}
-            />
-            <p className="error">{formErrors.startDate}</p>
-          </label>
-        </fieldset>
-        <fieldset>
-          <legend>Address</legend>
-          <label htmlFor="street">
-            Street
-            <input
-              type="text"
-              name="street"
-              placeholder="Street"
-              id="street"
-              onChange={handleChange}
-            />
-            <p className="error">{formErrors.street}</p>
-          </label>
-          <label htmlFor="city">
-            City
-            <input
-              type="text"
-              name="city"
-              placeholder="City"
-              id="city"
-              onChange={handleChange}
-            />
-            <p className="error">{formErrors.city}</p>
-          </label>
-          <label htmlFor="states">
-            States
-            <select name="states" id="state" onChange={handleChange}>
-              {States.map((state) => (
-                <option key={state.value}>{state.name}</option>
-              ))}
-            </select>
-          </label>
-          <label htmlFor="zipCode">
-            ZipCode
-            <input
-              type="number"
-              min={1}
-              name="zipCode"
-              placeholder="ZipCode"
-              id="zipCode"
-              onChange={handleChange}
-            />
-            <p className="error">{formErrors.zipCode}</p>
-          </label>
-        </fieldset>
-        <fieldset>
-          <legend>Sector</legend>
-          <label htmlFor="Departement">
-            Departement
-            <select name="Departement" id="Department" onChange={handleChange}>
-              {Departments.map((department) => (
-                <option key={department.value}>{department.name}</option>
-              ))}
-            </select>
-          </label>
-        </fieldset>
+        <div className="form_logo" />
+        <div className="form_container">
+          <div className="field">
+            <label htmlFor="firstName">
+              Firstname
+              <input
+                type="text"
+                name="firstName"
+                id="firstName"
+                placeholder="firstname"
+                onChange={handleChange}
+              />
+              <p className="error">{formErrors.firstName}</p>
+            </label>
+            <label htmlFor="lastName">
+              Lastname
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                placeholder="lastname"
+                onChange={handleChange}
+              />
+              <p className="error">{formErrors.lastName}</p>
+            </label>
+
+            <label htmlFor="dateOfBirth">
+              Date of Birth
+              <input
+                type="date"
+                name="dateOfBirth"
+                id="dateOfBirth"
+                onChange={handleChange}
+              />
+              <p className="error">{formErrors.dateOfBirth}</p>
+            </label>
+            <label htmlFor="startDate">
+              Start Date
+              <input
+                type="date"
+                name="startDate"
+                id="startDate"
+                onChange={handleChange}
+              />
+              <p className="error">{formErrors.startDate}</p>
+            </label>
+          </div>
+          <div className="field">
+            <label htmlFor="street">
+              Street
+              <input
+                type="text"
+                name="street"
+                placeholder="Street"
+                id="street"
+                onChange={handleChange}
+              />
+              <p className="error">{formErrors.street}</p>
+            </label>
+            <label htmlFor="city">
+              City
+              <input
+                type="text"
+                name="city"
+                placeholder="City"
+                id="city"
+                onChange={handleChange}
+              />
+              <p className="error">{formErrors.city}</p>
+            </label>
+            <label htmlFor="states">
+              States
+              <select name="states" id="state" onChange={handleChange}>
+                {States.map((state) => (
+                  <option key={state.value}>{state.name}</option>
+                ))}
+              </select>
+            </label>
+            <label htmlFor="zipCode">
+              ZipCode
+              <input
+                type="number"
+                min={1}
+                name="zipCode"
+                placeholder="ZipCode"
+                id="zipCode"
+                onChange={handleChange}
+              />
+              <p className="error">{formErrors.zipCode}</p>
+            </label>
+          </div>
+          <div className="field">
+            <label htmlFor="Departement">
+              Departement
+              <select
+                name="Departement"
+                id="Department"
+                onChange={handleChange}
+              >
+                {Departments.map((department) => (
+                  <option key={department.value}>{department.name}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+        </div>
 
         <button type="submit">Create</button>
       </form>

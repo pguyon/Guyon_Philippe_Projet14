@@ -11,7 +11,7 @@
         display: flex;
         flex-direction: column;
         width: 450px;
-        // min-height: 900px;
+        height: auto;
         align-items: center;
         justify-content: space-evenly;
         border-radius: 20px;
@@ -21,13 +21,23 @@
         box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
         caret-color: red;
 
+        .form_logo {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            box-sizing: border-box;
+            box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+            background-image: url("../Assets/logo-hrnet.svg");
+            background-size: 100px;
+        }
 
-        fieldset {
+        fieldset,
+        .field {
             color: black;
             display: flex;
-            padding: 15px;
-            justify-content: space-between;
-            width: 80%;
+            padding: 20px;
+            justify-content: space-evenly;
+            width: 100%;
             flex-wrap: wrap;
             border-radius: 5px;
 
@@ -49,12 +59,12 @@
                     box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
                 }
 
-                select {                  
+                select {
                     border: none;
                     outline: none;
                     width: 150px;
                     background: #ecf0f3;
-                    padding: 10px;                    
+                    padding: 10px;
                     height: 50px;
                     font-size: 14px;
                     border-radius: 50px;
