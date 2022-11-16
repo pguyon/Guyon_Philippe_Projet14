@@ -72,12 +72,24 @@ const CreateEmployee = () => {
 
   useEffect(() => {
     if (isSubmit) {
-      confirmAlert({        
+      confirmAlert({
         customUI: () => {
           return (
             <div className="custom-ui">
               <h1>Employee create !</h1>
-              <button onClick={() => navigate("/employee")}>
+              <button
+                onClick={() => navigate("/employee")}
+                style={{
+                  padding: "10px",
+                  color: "white",
+                  background: "#1DA1F2",
+                  marginTop: "5px",
+                  border: "none",
+                  outline: "none",
+                  borderRadius: "5px",
+                  cursor: 'pointer'
+                }}
+              >
                 Go to employee's list
               </button>
             </div>
