@@ -4,7 +4,7 @@ import { States, Departments } from "../Mocked/MockedData";
 import { useDispatch, useSelector } from "react-redux";
 import { addEmployee } from "../Store/Slice/EmployeeSlice";
 import { useNavigate } from "react-router-dom";
-import { confirmAlert } from "react-confirm-alert"; // Import
+import { confirmAlert } from "react-confirm-alert"; 
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 const CreateEmployee = () => {
