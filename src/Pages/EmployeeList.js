@@ -20,6 +20,10 @@ const EmployeeList = () => {
   const columns = useMemo(
     () => [
       {
+        accessorKey: "id",
+        header: "#",
+      },
+      {
         accessorKey: "firstName",
         header: "First Name",
       },

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/CreateEmployee.css";
 import { States, Departments } from "../Mocked/MockedData";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addEmployee } from "../Store/Slice/EmployeeSlice";
 import { useNavigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert"; // Import
@@ -9,6 +9,7 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
+  const employeeList = useSelector((state) => state.employee.value)
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -29,6 +30,7 @@ const CreateEmployee = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newEmployee = {
+      id: employeeList[employeeList.length - 1].id + 1,
       firstName: formValues.firstName,
       lastName: formValues.lastName,
       dateOfBirth: formValues.dateOfBirth,

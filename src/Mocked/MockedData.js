@@ -262,6 +262,7 @@ export const States = [
 
 export const Employee = [
   {
+    id: 1,
     firstName: "John",
     lastName: "Doe",
     dateOfBirth: "02/09/1996",
@@ -273,6 +274,7 @@ export const Employee = [
     zipCode: "10",
   },
   {
+    id: 2,
     firstName: "Jane",
     lastName: "Doe",
     dateOfBirth: "12/11/1986",
@@ -284,6 +286,7 @@ export const Employee = [
     zipCode: "47",
   },
   {
+    id: 3,
     firstName: "Kevin",
     lastName: "Vandy",
     dateOfBirth: "03/06/2001",

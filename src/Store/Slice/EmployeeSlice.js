@@ -1,15 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = {
-  employee: [],
-};
+import { Employee } from "../../Mocked/MockedData";
 
 export const employeeSlice = createSlice({
   name: "Employee",
-  initialState,
+  initialState: { value: Employee },
   reducers: {
     addEmployee(state, action) {
-      state.employee.push(action.payload);   
+      state.value.push(action.payload);
     },
   },
 });
