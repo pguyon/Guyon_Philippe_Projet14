@@ -4,42 +4,41 @@ import { States, Departments } from "../Mocked/MockedData";
 import { useDispatch, useSelector } from "react-redux";
 import { addEmployee } from "../Store/Slice/EmployeeSlice";
 import { useNavigate } from "react-router-dom";
-import { confirmAlert } from "react-confirm-alert"; 
+import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
-  const employeeList = useSelector((state) => state.employee.value)
-  const initialValues = {
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
-    startDate: "",
-    department: "Sales",
-    street: "",
-    city: "",
-    state: "Alabama",
-    zipCode: "",
-  };
+  const employeeList = useSelector((state) => state.employee.value);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [department, setDepartment] = useState("Sales");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("Alabama");
+  const [zipCode, setZipCode] = useState("");
+
+
 
   const [isSubmit, setIsSubmit] = useState(false);
-  const [send, setSend] = useState(false);
-  const [formValues, setFormValues] = useState(initialValues);
+  const [send, setSend] = useState(false);  
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newEmployee = {
       id: employeeList[employeeList.length - 1].id + 1,
-      firstName: formValues.firstName,
-      lastName: formValues.lastName,
-      dateOfBirth: formValues.dateOfBirth,
-      startDate: formValues.startDate,
-      department: formValues.department,
-      street: formValues.street,
-      city: formValues.city,
-      state: formValues.state,
-      zipCode: formValues.zipCode,
+      firstName: firstName,
+      lastName: lastName,
+      dateOfBirth: dateOfBirth,
+      startDate: startDate,
+      department: department,
+      street: street,
+      city: city,
+      state: state,
+      zipCode: zipCode,
     };
 
     dispatch(addEmployee(newEmployee));
@@ -48,27 +47,27 @@ const CreateEmployee = () => {
 
   useEffect(() => {
     if (
-      formValues.firstName.length > 0 &&
-      formValues.lastName.length > 0 &&
-      formValues.dateOfBirth.length > 0 &&
-      formValues.startDate.length > 0 &&
-      formValues.city.length > 0 &&
-      formValues.street.length > 0 &&
-      formValues.zipCode.length > 0 &&
-      formValues.dateOfBirth < formValues.startDate
+      firstName.length > 0 &&
+      lastName.length > 0 &&
+      dateOfBirth.length > 0 &&
+      startDate.length > 0 &&
+      city.length > 0 &&
+      street.length > 0 &&
+      zipCode.length > 0 &&
+      dateOfBirth < startDate
     ) {
       setSend(true);
     } else {
       setSend(false);
     }
   }, [
-    formValues.firstName,
-    formValues.lastName,
-    formValues.dateOfBirth,
-    formValues.startDate,
-    formValues.city,
-    formValues.street,
-    formValues.zipCode,
+    firstName,
+    lastName,
+    dateOfBirth,
+    startDate,
+    city,
+    street,
+    zipCode,
     send,
   ]);
 
@@ -89,7 +88,7 @@ const CreateEmployee = () => {
                   border: "none",
                   outline: "none",
                   borderRadius: "5px",
-                  cursor: 'pointer'
+                  cursor: "pointer",
                 }}
               >
                 Go to employee's list
@@ -101,10 +100,7 @@ const CreateEmployee = () => {
     }
   }, [isSubmit, navigate]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-  };
+
 
   return (
     <section className="form_wrapper">
@@ -119,7 +115,7 @@ const CreateEmployee = () => {
                 name="firstName"
                 id="firstName"
                 placeholder="firstname"
-                onChange={handleChange}
+                onChange={(e) => setFirstName(e.target.value)}
               />
             </label>
             <label htmlFor="lastName">
@@ -129,7 +125,7 @@ const CreateEmployee = () => {
                 name="lastName"
                 id="lastName"
                 placeholder="lastname"
-                onChange={handleChange}
+                onChange={(e) => setLastName(e.target.value)}
               />
             </label>
 
@@ -139,7 +135,7 @@ const CreateEmployee = () => {
                 type="date"
                 name="dateOfBirth"
                 id="dateOfBirth"
-                onChange={handleChange}
+                onChange={(e) => setDateOfBirth(e.target.value)}
               />
             </label>
             <label htmlFor="startDate">
@@ -148,9 +144,9 @@ const CreateEmployee = () => {
                 type="date"
                 name="startDate"
                 id="startDate"
-                onChange={handleChange}
+                onChange={(e) => setStartDate(e.target.value)}
               />
-              {formValues.dateOfBirth >= formValues.startDate ? (
+              {dateOfBirth >= startDate ? (
                 <p className="error">
                   The start date must be greater than the date of birth
                 </p>
@@ -167,7 +163,7 @@ const CreateEmployee = () => {
                 name="street"
                 placeholder="Street"
                 id="street"
-                onChange={handleChange}
+                onChange={(e) => setStreet(e.target.value)}
               />
             </label>
             <label htmlFor="city">
@@ -177,12 +173,16 @@ const CreateEmployee = () => {
                 name="city"
                 placeholder="City"
                 id="city"
-                onChange={handleChange}
+                onChange={(e) => setCity(e.target.value)}
               />
             </label>
             <label htmlFor="states">
               States
-              <select name="states" id="state" onChange={handleChange}>
+              <select
+                name="states"
+                id="state"
+                onChange={(e) => setState(e.target.value)}
+              >
                 {States.map((state) => (
                   <option key={state.value}>{state.name}</option>
                 ))}
@@ -196,7 +196,7 @@ const CreateEmployee = () => {
                 name="zipCode"
                 placeholder="ZipCode"
                 id="zipCode"
-                onChange={handleChange}
+                onChange={(e) => setZipCode(e.target.value)}
               />
             </label>
           </div>
@@ -206,7 +206,7 @@ const CreateEmployee = () => {
               <select
                 name="Departement"
                 id="Department"
-                onChange={handleChange}
+                onChange={(e) => setDepartment(e.target.value)}
               >
                 {Departments.map((department) => (
                   <option key={department.value}>{department.name}</option>
