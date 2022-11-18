@@ -116,15 +116,11 @@ const CreateEmployee = () => {
                 placeholder="firstname"
                 onChange={(e) => setFirstName(e.target.value)}
               />
-              {firstName.length < 2 ? (
+              {firstName.length < 2 && (
                 <p className="error">2 characters minimum</p>
-              ) : (
-                ""
               )}
-              {!firstName.match(regex) && firstName.length > 1 ? (
+              {!firstName.match(regex) && firstName.length > 1 && (
                 <p className="error">Unauthorized characters</p>
-              ) : (
-                ""
               )}
             </label>
             <label htmlFor="lastName">
@@ -136,15 +132,11 @@ const CreateEmployee = () => {
                 placeholder="lastname"
                 onChange={(e) => setLastName(e.target.value)}
               />
-              {lastName.length < 2 ? (
+              {lastName.length < 2 && (
                 <p className="error">2 characters minimum</p>
-              ) : (
-                ""
               )}
-              {!lastName.match(regex) && lastName.length > 1 ? (
+              {!lastName.match(regex) && lastName.length > 1 && (
                 <p className="error">Unauthorized characters</p>
-              ) : (
-                ""
               )}
             </label>
 
@@ -156,11 +148,7 @@ const CreateEmployee = () => {
                 id="dateOfBirth"
                 onChange={(e) => setDateOfBirth(e.target.value)}
               />
-              {dateOfBirth.length === 0 ? (
-                <p className="error">Required</p>
-              ) : (
-                ""
-              )}
+              {dateOfBirth.length === 0 && <p className="error">Required</p>}
             </label>
             <label htmlFor="startDate">
               Start Date
@@ -170,12 +158,10 @@ const CreateEmployee = () => {
                 id="startDate"
                 onChange={(e) => setStartDate(e.target.value)}
               />
-              {dateOfBirth >= startDate ? (
+              {dateOfBirth >= startDate && (
                 <p className="error">
                   Start date must be greater than date of birth
                 </p>
-              ) : (
-                ""
               )}
             </label>
           </div>
@@ -189,15 +175,11 @@ const CreateEmployee = () => {
                 id="street"
                 onChange={(e) => setStreet(e.target.value)}
               />
-              {street.length < 6 ? (
+              {street.length < 6 && (
                 <p className="error">6 characters minimum</p>
-              ) : (
-                ""
               )}
-              {!street.match(regex) && street.length > 5 ? (
+              {!street.match(regex) && street.length > 5 && (
                 <p className="error">Unauthorized characters</p>
-              ) : (
-                ""
               )}
             </label>
             <label htmlFor="city">
@@ -209,15 +191,9 @@ const CreateEmployee = () => {
                 id="city"
                 onChange={(e) => setCity(e.target.value)}
               />
-                {city.length < 2 ? (
-                <p className="error">2 characters minimum</p>
-              ) : (
-                ""
-              )}
-              {!city.match(regex) && city.length > 1 ? (
+              {city.length < 2 && <p className="error">2 characters minimum</p>}
+              {!city.match(regex) && city.length > 1 && (
                 <p className="error">Unauthorized characters</p>
-              ) : (
-                ""
               )}
             </label>
             <label htmlFor="states">
@@ -231,11 +207,7 @@ const CreateEmployee = () => {
                   <option key={state.value}>{state.name}</option>
                 ))}
               </select>
-              {state.length === 0 ? (
-                <p className="error">Required</p>
-              ) : (
-                ""
-              )}
+              {state.length === 0 && <p className="error">Required</p>}
             </label>
             <label htmlFor="zipCode">
               ZipCode
@@ -247,11 +219,7 @@ const CreateEmployee = () => {
                 id="zipCode"
                 onChange={(e) => setZipCode(e.target.value)}
               />
-                 {zipCode.length === 0 ? (
-                <p className="error">Required</p>
-              ) : (
-                ""
-              )}
+              {zipCode.length === 0 && <p className="error">Required</p>}
             </label>
           </div>
           <div className="field">
