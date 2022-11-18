@@ -24,7 +24,7 @@ const CreateEmployee = () => {
   const [send, setSend] = useState(false);
   const navigate = useNavigate();
 
-  const regex = /^[A-Za-z]+$/;
+  const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9\- _]*[A-Za-zÀ-ÖØ-öø-ÿ0-9][A-Za-zÀ-ÖØ-öø-ÿ0-9\- _]*$/;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -122,7 +122,7 @@ const CreateEmployee = () => {
                 ""
               )}
               {!firstName.match(regex) && firstName.length > 1 ? (
-                <p className="error">unauthorized characters</p>
+                <p className="error">Unauthorized characters</p>
               ) : (
                 ""
               )}
@@ -142,7 +142,7 @@ const CreateEmployee = () => {
                 ""
               )}
               {!lastName.match(regex) && lastName.length > 1 ? (
-                <p className="error">unauthorized characters</p>
+                <p className="error">Unauthorized characters</p>
               ) : (
                 ""
               )}
@@ -156,6 +156,11 @@ const CreateEmployee = () => {
                 id="dateOfBirth"
                 onChange={(e) => setDateOfBirth(e.target.value)}
               />
+              {dateOfBirth.length === 0 ? (
+                <p className="error">Required</p>
+              ) : (
+                ""
+              )}
             </label>
             <label htmlFor="startDate">
               Start Date
@@ -184,6 +189,16 @@ const CreateEmployee = () => {
                 id="street"
                 onChange={(e) => setStreet(e.target.value)}
               />
+              {street.length < 6 ? (
+                <p className="error">6 characters minimum</p>
+              ) : (
+                ""
+              )}
+              {!street.match(regex) && street.length > 5 ? (
+                <p className="error">Unauthorized characters</p>
+              ) : (
+                ""
+              )}
             </label>
             <label htmlFor="city">
               City
@@ -194,6 +209,16 @@ const CreateEmployee = () => {
                 id="city"
                 onChange={(e) => setCity(e.target.value)}
               />
+                {city.length < 2 ? (
+                <p className="error">2 characters minimum</p>
+              ) : (
+                ""
+              )}
+              {!city.match(regex) && city.length > 1 ? (
+                <p className="error">Unauthorized characters</p>
+              ) : (
+                ""
+              )}
             </label>
             <label htmlFor="states">
               States
