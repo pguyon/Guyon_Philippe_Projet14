@@ -24,10 +24,12 @@ const CreateEmployee = () => {
   const [send, setSend] = useState(false);
   const navigate = useNavigate();
 
+  /* A regular expression that is used to check if the input is valid. */
   const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    /* Creating a new employee object with the values from the form. */
     const newEmployee = {
       id: employeeList[employeeList.length - 1].id + 1,
       firstName: firstName,
@@ -46,6 +48,7 @@ const CreateEmployee = () => {
   };
 
   useEffect(() => {
+    /* Checking if the form is filled in. */
     if (
       firstName.length > 0 &&
       lastName.length > 0 &&
