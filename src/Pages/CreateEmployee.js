@@ -24,7 +24,7 @@ const CreateEmployee = () => {
   const [send, setSend] = useState(false);
   const navigate = useNavigate();
 
-  const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9\- _]*[A-Za-zÀ-ÖØ-öø-ÿ0-9][A-Za-zÀ-ÖØ-öø-ÿ0-9\- _]*$/;
+  const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9\- _]*$/;
 
   const handleSubmit = (e) => {
     e.preventDefault();
