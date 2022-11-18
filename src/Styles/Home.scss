@@ -1,14 +1,13 @@
-@import '../Variables/Variables.scss';
+
 
 .home {
     text-align: center;   
-    background-color: $body;
+    background-color: white;
     height: calc(100vh - 80px);
     display: flex;
     justify-content: center;
     img {
-        width: 300px;
-        filter: invert(1);      
+        width: 300px;            
         animation: appear 0.5s linear;
     }
 }

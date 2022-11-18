@@ -1,7 +1,9 @@
 .table_wrapper {
   padding: 75px;
-  background-color: rgb(57, 62, 70);
   height: calc(100vh - 80px);
+}
+.table_wrapper .MuiPaper-root {
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 .table_wrapper .react-confirm-alert {
   display: none;

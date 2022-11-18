@@ -1,14 +1,17 @@
-@import '../Variables/Variables.scss';
-
 .table_wrapper {
     padding: 75px;
-    background-color: $body;
     height: calc(100vh - 80px);
+
+    .MuiPaper-root {
+        box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    }
 
     .react-confirm-alert {
         display: none;
     }
+
     @media screen and (max-width: 419px) {
-        padding: 75px 10px;;
+        padding: 75px 10px;
+        ;
     }
 }
