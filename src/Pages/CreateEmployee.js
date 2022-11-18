@@ -231,6 +231,11 @@ const CreateEmployee = () => {
                   <option key={state.value}>{state.name}</option>
                 ))}
               </select>
+              {state.length === 0 ? (
+                <p className="error">Required</p>
+              ) : (
+                ""
+              )}
             </label>
             <label htmlFor="zipCode">
               ZipCode
@@ -242,6 +247,11 @@ const CreateEmployee = () => {
                 id="zipCode"
                 onChange={(e) => setZipCode(e.target.value)}
               />
+                 {zipCode.length === 0 ? (
+                <p className="error">Required</p>
+              ) : (
+                ""
+              )}
             </label>
           </div>
           <div className="field">
