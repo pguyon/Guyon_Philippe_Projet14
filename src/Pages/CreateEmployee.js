@@ -24,7 +24,7 @@ const CreateEmployee = () => {
   const [send, setSend] = useState(false);
   const navigate = useNavigate();
 
-  const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9\- _]*$/;
+  const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -172,7 +172,7 @@ const CreateEmployee = () => {
               />
               {dateOfBirth >= startDate ? (
                 <p className="error">
-                  The start date must be greater than the date of birth
+                  Start date must be greater than date of birth
                 </p>
               ) : (
                 ""
