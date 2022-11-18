@@ -20,11 +20,11 @@ const CreateEmployee = () => {
   const [state, setState] = useState("Alabama");
   const [zipCode, setZipCode] = useState("");
 
-
-
   const [isSubmit, setIsSubmit] = useState(false);
-  const [send, setSend] = useState(false);  
+  const [send, setSend] = useState(false);
   const navigate = useNavigate();
+
+  const regex = /^[A-Za-z]+$/;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,6 +71,7 @@ const CreateEmployee = () => {
     send,
   ]);
 
+  /* Create modal if the form is submitting*/
   useEffect(() => {
     if (isSubmit) {
       confirmAlert({
@@ -100,8 +101,6 @@ const CreateEmployee = () => {
     }
   }, [isSubmit, navigate]);
 
-
-
   return (
     <section className="form_wrapper">
       <form onSubmit={handleSubmit}>
@@ -117,6 +116,16 @@ const CreateEmployee = () => {
                 placeholder="firstname"
                 onChange={(e) => setFirstName(e.target.value)}
               />
+              {firstName.length < 2 ? (
+                <p className="error">2 characters minimum</p>
+              ) : (
+                ""
+              )}
+              {!firstName.match(regex) && firstName.length > 1 ? (
+                <p className="error">unauthorized characters</p>
+              ) : (
+                ""
+              )}
             </label>
             <label htmlFor="lastName">
               Lastname
@@ -127,6 +136,16 @@ const CreateEmployee = () => {
                 placeholder="lastname"
                 onChange={(e) => setLastName(e.target.value)}
               />
+              {lastName.length < 2 ? (
+                <p className="error">2 characters minimum</p>
+              ) : (
+                ""
+              )}
+              {!lastName.match(regex) && lastName.length > 1 ? (
+                <p className="error">unauthorized characters</p>
+              ) : (
+                ""
+              )}
             </label>
 
             <label htmlFor="dateOfBirth">
