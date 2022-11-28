@@ -46,7 +46,6 @@
 .form_wrapper form .field label {
   display: flex;
   flex-direction: column;
-  margin-top: 5px;
 }
 .form_wrapper form fieldset label input,
 .form_wrapper form .field label input {
