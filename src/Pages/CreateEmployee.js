@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import InputDate from "../components/InputDate";
+import InputSelected from "../components/InputSelected";
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
@@ -105,13 +106,6 @@ const CreateEmployee = () => {
     }
   }, [isSubmit, navigate]);
 
-  const handleBirthDate = (e) => {
-    setDateOfBirth(e.target.value);
-  };
-  const handleStartDate = (e) => {
-    setStartDate(e.target.value);
-  };
-
   return (
     <section className="form_wrapper">
       <form onSubmit={handleSubmit}>
@@ -155,7 +149,7 @@ const CreateEmployee = () => {
               <InputDate
                 name="dateOfBirth"
                 id="dateOfBirth"
-                onChange={handleBirthDate}
+                onChange={(e) => setDateOfBirth(e.target.value)}
               />
               {dateOfBirth.length === 0 && <p className="error">Required</p>}
             </label>
@@ -163,7 +157,7 @@ const CreateEmployee = () => {
               <InputDate
                 name="startDate"
                 id="startDate"
-                onChange={handleStartDate}
+                onChange={(e) => setStartDate(e.target.value)}
               />
               {dateOfBirth >= startDate && (
                 <p className="error">
@@ -204,16 +198,12 @@ const CreateEmployee = () => {
               )}
             </label>
             <label htmlFor="states">
-              States
-              <select
+              <InputSelected
                 name="states"
                 id="state"
                 onChange={(e) => setState(e.target.value)}
-              >
-                {States.map((state) => (
-                  <option key={state.value}>{state.name}</option>
-                ))}
-              </select>
+                array={States}
+              />
               {state.length === 0 && <p className="error">Required</p>}
             </label>
             <label htmlFor="zipCode">
@@ -231,16 +221,13 @@ const CreateEmployee = () => {
           </div>
           <div className="field">
             <label htmlFor="Departement">
-              Departement
-              <select
+              <InputSelected
                 name="Departement"
                 id="Department"
                 onChange={(e) => setDepartment(e.target.value)}
-              >
-                {Departments.map((department) => (
-                  <option key={department.value}>{department.name}</option>
-                ))}
-              </select>
+                array={Departments}
+              />
+              {department.length === 0 && <p className="error">Required</p>}
             </label>
           </div>
         </div>

@@ -47,10 +47,10 @@
             flex-wrap: wrap;
             border-radius: 5px;
 
-            label {
+            .label {
                 display: flex;
                 flex-direction: column;
-                margin-top: 5px;
+                margin-top: 15px;
 
                 input {
                     border: none;
