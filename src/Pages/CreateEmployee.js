@@ -6,6 +6,7 @@ import { addEmployee } from "../Store/Slice/EmployeeSlice";
 import { useNavigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import InputDate from "../components/InputDate";
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
@@ -104,6 +105,13 @@ const CreateEmployee = () => {
     }
   }, [isSubmit, navigate]);
 
+  const handleBirthDate = (e) => {
+    setDateOfBirth(e.target.value);
+  };
+  const handleStartDate = (e) => {
+    setStartDate(e.target.value);
+  };
+
   return (
     <section className="form_wrapper">
       <form onSubmit={handleSubmit}>
@@ -144,22 +152,18 @@ const CreateEmployee = () => {
             </label>
 
             <label htmlFor="dateOfBirth">
-              Date of Birth
-              <input
-                type="date"
+              <InputDate
                 name="dateOfBirth"
                 id="dateOfBirth"
-                onChange={(e) => setDateOfBirth(e.target.value)}
+                onChange={handleBirthDate}
               />
               {dateOfBirth.length === 0 && <p className="error">Required</p>}
             </label>
             <label htmlFor="startDate">
-              Start Date
-              <input
-                type="date"
+              <InputDate
                 name="startDate"
                 id="startDate"
-                onChange={(e) => setStartDate(e.target.value)}
+                onChange={handleStartDate}
               />
               {dateOfBirth >= startDate && (
                 <p className="error">
