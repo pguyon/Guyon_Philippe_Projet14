@@ -145,15 +145,15 @@ const CreateEmployee = () => {
               )}
             </label>
 
-            <label htmlFor="dateOfBirth">
+            <div className="label">
               <InputDate
                 name="dateOfBirth"
                 id="dateOfBirth"
                 onChange={(e) => setDateOfBirth(e.target.value)}
               />
               {dateOfBirth.length === 0 && <p className="error">Required</p>}
-            </label>
-            <label htmlFor="startDate">
+            </div>
+            <div className="label">
               <InputDate
                 name="startDate"
                 id="startDate"
@@ -164,7 +164,7 @@ const CreateEmployee = () => {
                   Start date must be greater than date of birth
                 </p>
               )}
-            </label>
+            </div>
           </div>
           <div className="field">
             <label htmlFor="street">
@@ -197,7 +197,7 @@ const CreateEmployee = () => {
                 <p className="error">Unauthorized characters</p>
               )}
             </label>
-            <label htmlFor="states">
+            <div className="label">
               <InputSelected
                 name="states"
                 id="state"
@@ -205,7 +205,7 @@ const CreateEmployee = () => {
                 array={States}
               />
               {state.length === 0 && <p className="error">Required</p>}
-            </label>
+            </div>
             <label htmlFor="zipCode">
               ZipCode
               <input
@@ -220,7 +220,7 @@ const CreateEmployee = () => {
             </label>
           </div>
           <div className="field">
-            <label htmlFor="Departement">
+            <div className="label">
               <InputSelected
                 name="Departement"
                 id="Department"
@@ -228,7 +228,7 @@ const CreateEmployee = () => {
                 array={Departments}
               />
               {department.length === 0 && <p className="error">Required</p>}
-            </label>
+            </div>
           </div>
         </div>
 
