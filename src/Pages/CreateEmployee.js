@@ -4,13 +4,14 @@ import { States, Departments } from "../Mocked/MockedData";
 import { useDispatch, useSelector } from "react-redux";
 import { addEmployee } from "../Store/Slice/EmployeeSlice";
 import { useNavigate } from "react-router-dom";
-import { confirmAlert } from "react-confirm-alert";
-import "react-confirm-alert/src/react-confirm-alert.css";
 import InputDate from "../components/InputDate";
 import InputSelected from "../components/InputSelected";
+import { Modal } from "pg-react-modal";
+import useModal from "pg-react-modal/dist/hooks/useModal";
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
+  const { open, toggle } = useModal();
   const employeeList = useSelector((state) => state.employee.value);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -22,7 +23,7 @@ const CreateEmployee = () => {
   const [state, setState] = useState("Alabama");
   const [zipCode, setZipCode] = useState("");
 
-  const [isSubmit, setIsSubmit] = useState(false);
+  // const [isSubmit, setIsSubmit] = useState(false);
   const [send, setSend] = useState(false);
   const navigate = useNavigate();
 
@@ -46,7 +47,6 @@ const CreateEmployee = () => {
     };
 
     dispatch(addEmployee(newEmployee));
-    setIsSubmit(true);
   };
 
   useEffect(() => {
@@ -75,36 +75,6 @@ const CreateEmployee = () => {
     zipCode,
     send,
   ]);
-
-  /* Create modal if the form is submitting*/
-  useEffect(() => {
-    if (isSubmit) {
-      confirmAlert({
-        customUI: () => {
-          return (
-            <div className="custom-ui">
-              <h1>Employee create !</h1>
-              <button
-                onClick={() => navigate("/employee")}
-                style={{
-                  padding: "10px",
-                  color: "white",
-                  background: "#1DA1F2",
-                  marginTop: "5px",
-                  border: "none",
-                  outline: "none",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                }}
-              >
-                Go to employee's list
-              </button>
-            </div>
-          );
-        },
-      });
-    }
-  }, [isSubmit, navigate]);
 
   return (
     <section className="form_wrapper">
@@ -233,11 +203,24 @@ const CreateEmployee = () => {
         </div>
 
         {send === true ? (
-          <button type="submit">Create</button>
+          <button type="submit" onClick={toggle}>
+            Create
+          </button>
         ) : (
           <p>Please fill in the form</p>
         )}
       </form>
+      <Modal
+        isOpen={open}
+        actionButton={() => navigate("/employee")}        
+        bodyContent="The employee has been created"
+        buttonContent="close"
+        mainBackground="rgba(0, 0, 0, .25)"
+        modalBackground="lightgrey"
+        buttonBackground="blue"
+        buttonColor="white"
+        hide={toggle}
+      />
     </section>
   );
 };
