@@ -28,7 +28,7 @@ const CreateEmployee = () => {
   const navigate = useNavigate();
 
   /* A regular expression that is used to check if the input is valid. */
-  const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/;
+  //  const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,11 +53,15 @@ const CreateEmployee = () => {
     /* Checking if the form is filled in. */
     if (
       firstName.length > 0 &&
+      firstName.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/) &&
       lastName.length > 0 &&
+      lastName.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/) &&
       dateOfBirth.length > 0 &&
       startDate.length > 0 &&
       city.length > 0 &&
+      city.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/) &&
       street.length > 0 &&
+      street.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/) &&
       zipCode.length > 0 &&
       dateOfBirth < startDate
     ) {
@@ -91,12 +95,13 @@ const CreateEmployee = () => {
                 placeholder="firstname"
                 onChange={(e) => setFirstName(e.target.value)}
               />
-              {firstName.length < 2 && (
+              {firstName.length < 2 ? (
                 <p className="error">2 characters minimum</p>
-              )}
-              {!firstName.match(regex) && firstName.length > 1 && (
+              ) : null}
+              {!firstName.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/) &&
+              firstName.length > 1 ? (
                 <p className="error">Unauthorized characters</p>
-              )}
+              ) : null}
             </label>
             <label htmlFor="lastName">
               Lastname
@@ -107,12 +112,14 @@ const CreateEmployee = () => {
                 placeholder="lastname"
                 onChange={(e) => setLastName(e.target.value)}
               />
-              {lastName.length < 2 && (
+              {lastName.length < 2 ? (
                 <p className="error">2 characters minimum</p>
-              )}
-              {!lastName.match(regex) && lastName.length > 1 && (
-                <p className="error">Unauthorized characters</p>
-              )}
+              ) : null}
+              {!lastName.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/)
+                ? lastName.length > 1 && (
+                    <p className="error">Unauthorized characters</p>
+                  )
+                : null}
             </label>
 
             <div className="label">
@@ -121,7 +128,9 @@ const CreateEmployee = () => {
                 id="dateOfBirth"
                 onChange={(e) => setDateOfBirth(e.target.value)}
               />
-              {dateOfBirth.length === 0 && <p className="error">Required</p>}
+              {dateOfBirth.length === 0 ? (
+                <p className="error">Required</p>
+              ) : null}
             </div>
             <div className="label">
               <InputDate
@@ -129,11 +138,11 @@ const CreateEmployee = () => {
                 id="startDate"
                 onChange={(e) => setStartDate(e.target.value)}
               />
-              {dateOfBirth >= startDate && (
+              {dateOfBirth >= startDate ? (
                 <p className="error">
                   Start date must be greater than date of birth
                 </p>
-              )}
+              ) : null}
             </div>
           </div>
           <div className="field">
@@ -146,12 +155,14 @@ const CreateEmployee = () => {
                 id="street"
                 onChange={(e) => setStreet(e.target.value)}
               />
-              {street.length < 6 && (
+              {street.length < 6 ? (
                 <p className="error">6 characters minimum</p>
-              )}
-              {!street.match(regex) && street.length > 5 && (
-                <p className="error">Unauthorized characters</p>
-              )}
+              ) : null}
+              {!street.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/)
+                ? street.length > 5 && (
+                    <p className="error">Unauthorized characters</p>
+                  )
+                : null}
             </label>
             <label htmlFor="city">
               City
@@ -162,10 +173,12 @@ const CreateEmployee = () => {
                 id="city"
                 onChange={(e) => setCity(e.target.value)}
               />
-              {city.length < 2 && <p className="error">2 characters minimum</p>}
-              {!city.match(regex) && city.length > 1 && (
+              {city.length < 2 ? (
+                <p className="error">2 characters minimum</p>
+              ) : null}
+              {!city.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/) && city.length > 1 ? (
                 <p className="error">Unauthorized characters</p>
-              )}
+              ) : null}
             </label>
             <div className="label">
               <InputSelected
@@ -174,7 +187,7 @@ const CreateEmployee = () => {
                 onChange={(e) => setState(e.target.value)}
                 array={States}
               />
-              {state.length === 0 && <p className="error">Required</p>}
+              {state.length === 0 ? <p className="error">Required</p> : null}
             </div>
             <label htmlFor="zipCode">
               ZipCode
@@ -186,7 +199,7 @@ const CreateEmployee = () => {
                 id="zipCode"
                 onChange={(e) => setZipCode(e.target.value)}
               />
-              {zipCode.length === 0 && <p className="error">Required</p>}
+              {zipCode.length === 0 ? <p className="error">Required</p> : null}
             </label>
           </div>
           <div className="field">
@@ -197,7 +210,9 @@ const CreateEmployee = () => {
                 onChange={(e) => setDepartment(e.target.value)}
                 array={Departments}
               />
-              {department.length === 0 && <p className="error">Required</p>}
+              {department.length === 0 ? (
+                <p className="error">Required</p>
+              ) : null}
             </div>
           </div>
         </div>
@@ -212,7 +227,7 @@ const CreateEmployee = () => {
       </form>
       <Modal
         isOpen={open}
-        actionButton={() => navigate("/employee")}        
+        actionButton={() => navigate("/employee")}
         bodyContent="The employee has been created"
         buttonContent="close"
         mainBackground="rgba(0, 0, 0, .25)"
