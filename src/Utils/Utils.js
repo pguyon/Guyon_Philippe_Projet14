@@ -3,7 +3,8 @@ export const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/;
 
 /**
  * If the length of the value is greater than 0, return true, otherwise return false.
- * @param value - The value of the input field
+ * @type {function} 
+ * @param {string} - The value of the input field
  * @returns A function that takes a value and returns a boolean.
  */
 export const lengthIsValid = (value) => {
@@ -13,7 +14,8 @@ export const lengthIsValid = (value) => {
 /**
  * If the length of the value is valid and the value matches the regex, then return true, otherwise
  * return false.
- * @param value - The value of the input field
+ * @type {function} 
+ * @param {string} - The value of the input field
  * @returns A function that takes a value and returns a boolean.
  */
 export const textIsValid = (value) => {
@@ -23,7 +25,8 @@ export const textIsValid = (value) => {
 /**
  * If the value is less than 2 characters, return an error message. If the value doesn't match the
  * regex, return an error message. Otherwise, return nothing.
- * @param value - the value of the input
+ * @type {function}
+ * @param {string} - the value of the input
  * @returns A function that returns a JSX element.
  */
 export const errorTextMessage = (value) => {
@@ -37,7 +40,8 @@ export const errorTextMessage = (value) => {
 
 /**
  * If the value is empty, return a paragraph with the class name "error" and the text "Required".
- * @param value - the value of the input
+ * @type {function}
+ * @param {string} - the value of the input
  * @returns A function that returns a JSX element.
  */
 export const errorEmptyMessage = (value) => {
@@ -48,8 +52,9 @@ export const errorEmptyMessage = (value) => {
 
 /**
  * If date1 is greater than or equal to date2, return an error message.
- * @param date1 - the date of birth
- * @param date2 - the date of birth
+ * @type {function}
+ * @param {date} - first date
+ * @param {date} - second date
  * @returns A React component.
  */
 export const compareDate = (date1, date2) => {
