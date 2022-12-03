@@ -8,6 +8,7 @@ import InputDate from "../components/InputDate";
 import InputSelected from "../components/InputSelected";
 import { Modal } from "pg-react-modal";
 import useModal from "pg-react-modal/dist/hooks/useModal";
+import { regex, textIsValid, lengthIsValid } from "../Utils/Utils";
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
@@ -26,9 +27,6 @@ const CreateEmployee = () => {
   // const [isSubmit, setIsSubmit] = useState(false);
   const [send, setSend] = useState(false);
   const navigate = useNavigate();
-
-  /* A regular expression that is used to check if the input is valid. */
-  //  const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,18 +50,14 @@ const CreateEmployee = () => {
   useEffect(() => {
     /* Checking if the form is filled in. */
     if (
-      firstName.length > 0 &&
-      firstName.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/) &&
-      lastName.length > 0 &&
-      lastName.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/) &&
-      dateOfBirth.length > 0 &&
-      startDate.length > 0 &&
-      city.length > 0 &&
-      city.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/) &&
-      street.length > 0 &&
-      street.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/) &&
-      zipCode.length > 0 &&
-      dateOfBirth < startDate
+      dateOfBirth < startDate &&
+      textIsValid(firstName) &&
+      textIsValid(lastName) &&
+      textIsValid(city) &&
+      textIsValid(street) &&
+      lengthIsValid(dateOfBirth) &&
+      lengthIsValid(startDate) &&
+      lengthIsValid(zipCode)
     ) {
       setSend(true);
     } else {
@@ -98,8 +92,7 @@ const CreateEmployee = () => {
               {firstName.length < 2 ? (
                 <p className="error">2 characters minimum</p>
               ) : null}
-              {!firstName.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/) &&
-              firstName.length > 1 ? (
+              {!firstName.match(regex) && firstName.length > 1 ? (
                 <p className="error">Unauthorized characters</p>
               ) : null}
             </label>
@@ -115,7 +108,7 @@ const CreateEmployee = () => {
               {lastName.length < 2 ? (
                 <p className="error">2 characters minimum</p>
               ) : null}
-              {!lastName.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/)
+              {!lastName.match(regex)
                 ? lastName.length > 1 && (
                     <p className="error">Unauthorized characters</p>
                   )
@@ -158,7 +151,7 @@ const CreateEmployee = () => {
               {street.length < 6 ? (
                 <p className="error">6 characters minimum</p>
               ) : null}
-              {!street.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/)
+              {!street.match(regex)
                 ? street.length > 5 && (
                     <p className="error">Unauthorized characters</p>
                   )
@@ -176,7 +169,7 @@ const CreateEmployee = () => {
               {city.length < 2 ? (
                 <p className="error">2 characters minimum</p>
               ) : null}
-              {!city.match(/^[A-Za-zÀ-ÖØ-öø-ÿ\d\- _]*$/) && city.length > 1 ? (
+              {!city.match(regex) && city.length > 1 ? (
                 <p className="error">Unauthorized characters</p>
               ) : null}
             </label>
