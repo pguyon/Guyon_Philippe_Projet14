@@ -8,7 +8,13 @@ import InputDate from "../components/InputDate";
 import InputSelected from "../components/InputSelected";
 import { Modal } from "pg-react-modal";
 import useModal from "pg-react-modal/dist/hooks/useModal";
-import { regex, textIsValid, lengthIsValid } from "../Utils/Utils";
+import {
+  textIsValid,
+  lengthIsValid,
+  errorTextMessage,
+  errorEmptyMessage,
+  compareDate,
+} from "../Utils/Utils";
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
@@ -24,7 +30,6 @@ const CreateEmployee = () => {
   const [state, setState] = useState("Alabama");
   const [zipCode, setZipCode] = useState("");
 
-  // const [isSubmit, setIsSubmit] = useState(false);
   const [send, setSend] = useState(false);
   const navigate = useNavigate();
 
@@ -89,12 +94,7 @@ const CreateEmployee = () => {
                 placeholder="firstname"
                 onChange={(e) => setFirstName(e.target.value)}
               />
-              {firstName.length < 2 ? (
-                <p className="error">2 characters minimum</p>
-              ) : null}
-              {!firstName.match(regex) && firstName.length > 1 ? (
-                <p className="error">Unauthorized characters</p>
-              ) : null}
+              {errorTextMessage(firstName)}
             </label>
             <label htmlFor="lastName">
               Lastname
@@ -105,14 +105,7 @@ const CreateEmployee = () => {
                 placeholder="lastname"
                 onChange={(e) => setLastName(e.target.value)}
               />
-              {lastName.length < 2 ? (
-                <p className="error">2 characters minimum</p>
-              ) : null}
-              {!lastName.match(regex)
-                ? lastName.length > 1 && (
-                    <p className="error">Unauthorized characters</p>
-                  )
-                : null}
+              {errorTextMessage(lastName)}
             </label>
 
             <div className="label">
@@ -121,9 +114,7 @@ const CreateEmployee = () => {
                 id="dateOfBirth"
                 onChange={(e) => setDateOfBirth(e.target.value)}
               />
-              {dateOfBirth.length === 0 ? (
-                <p className="error">Required</p>
-              ) : null}
+              {errorEmptyMessage(dateOfBirth)}
             </div>
             <div className="label">
               <InputDate
@@ -131,11 +122,7 @@ const CreateEmployee = () => {
                 id="startDate"
                 onChange={(e) => setStartDate(e.target.value)}
               />
-              {dateOfBirth >= startDate ? (
-                <p className="error">
-                  Start date must be greater than date of birth
-                </p>
-              ) : null}
+              {compareDate(dateOfBirth, startDate)}
             </div>
           </div>
           <div className="field">
@@ -148,14 +135,7 @@ const CreateEmployee = () => {
                 id="street"
                 onChange={(e) => setStreet(e.target.value)}
               />
-              {street.length < 6 ? (
-                <p className="error">6 characters minimum</p>
-              ) : null}
-              {!street.match(regex)
-                ? street.length > 5 && (
-                    <p className="error">Unauthorized characters</p>
-                  )
-                : null}
+              {errorTextMessage(street)}
             </label>
             <label htmlFor="city">
               City
@@ -166,12 +146,7 @@ const CreateEmployee = () => {
                 id="city"
                 onChange={(e) => setCity(e.target.value)}
               />
-              {city.length < 2 ? (
-                <p className="error">2 characters minimum</p>
-              ) : null}
-              {!city.match(regex) && city.length > 1 ? (
-                <p className="error">Unauthorized characters</p>
-              ) : null}
+              {errorTextMessage(city)}
             </label>
             <div className="label">
               <InputSelected
@@ -180,7 +155,7 @@ const CreateEmployee = () => {
                 onChange={(e) => setState(e.target.value)}
                 array={States}
               />
-              {state.length === 0 ? <p className="error">Required</p> : null}
+              {errorEmptyMessage(state)}
             </div>
             <label htmlFor="zipCode">
               ZipCode
@@ -192,7 +167,7 @@ const CreateEmployee = () => {
                 id="zipCode"
                 onChange={(e) => setZipCode(e.target.value)}
               />
-              {zipCode.length === 0 ? <p className="error">Required</p> : null}
+              {errorEmptyMessage(zipCode)}
             </label>
           </div>
           <div className="field">
@@ -203,9 +178,7 @@ const CreateEmployee = () => {
                 onChange={(e) => setDepartment(e.target.value)}
                 array={Departments}
               />
-              {department.length === 0 ? (
-                <p className="error">Required</p>
-              ) : null}
+              {errorEmptyMessage(department)}
             </div>
           </div>
         </div>
