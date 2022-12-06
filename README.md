@@ -18,3 +18,9 @@ Application to create, display and sort employees
 2. CD in repository and `npm i` or `npm install` to install all packages
 3. Launch application with `npm start`
 4. Find the application `http://localhost:3000/`
+
+### Lighthouse
+1. Start with `npm run build`
+2. If you don't have serve `npm install -g serve`
+3. Launch serve `serve -s build`
+4. Test the performance of your application on the build serve
